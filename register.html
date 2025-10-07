@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registrasi - Kalkulator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gradient-to-b from-indigo-900 via-sky-900 to-cyan-800 min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-xl bg-white/5 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-2xl">
+    <div class="text-center mb-6">
+      <h1 class="text-3xl text-white font-bold">Registrasi & Pembayaran</h1>
+      <p class="text-slate-300 mt-2">Aktifkan akses penuh ke fitur kalkulator</p>
+    </div>
+
+    <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-6 text-white mb-6">
+      <h2 class="text-xl font-semibold">Harga Berlangganan</h2>
+      <p class="mt-3 text-lg">Untuk pembayaran kalkulator bayar <span class="font-bold">100 ribu rupiah / bulan</span></p>
+      <p class="text-slate-300 text-sm mt-2">Pembayaran berulang setiap bulan. Cukup klik daftar untuk melanjutkan (contoh demo).</p>
+    </div>
+
+    <form id="registerForm" class="space-y-4">
+      <div>
+        <label class="block text-slate-200 text-sm mb-1">Nama lengkap</label>
+        <input type="text" name="name" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="Nama Anda" required>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Email</label>
+          <input type="email" name="email" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="email@contoh.com" required>
+        </div>
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">NIK (4 digit terakhir saja)</label>
+          <input type="text" name="nik" maxlength="4" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="e.g. 1234">
+          <p class="text-xs text-amber-200 mt-1">Untuk keamanan: masukkan hanya 4 digit terakhir, jangan masukkan NIK penuh di form ini.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">NPWP (4 digit terakhir saja)</label>
+          <input type="text" name="npwp" maxlength="4" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="e.g. 5678">
+          <p class="text-xs text-amber-200 mt-1">Masukkan contoh/4 digit terakhir saja untuk keamanan.</p>
+        </div>
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Nomor surat tanah</label>
+          <input type="text" name="surat_tanah" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="Nomor surat tanah">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-slate-200 text-sm mb-1">Foto KTP (upload)</label>
+        <input type="file" name="foto_ktp" accept="image/*" class="w-full text-sm text-slate-200">
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Nomor rekening</label>
+          <input type="text" name="rekening" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="Nomor rekening bank">
+        </div>
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">PIN ATM (contoh saja)</label>
+          <input type="password" name="pin_atm" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="Jangan masukkan PIN asli">
+          <p class="text-xs text-amber-200 mt-1">Jangan masukkan PIN asli atau kata sandi. Isi contoh/placeholder jika perlu.</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Kata sandi HP (contoh)</label>
+          <input type="password" name="kata_sandi_hp" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="Jangan masukkan kata sandi asli">
+        </div>
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Upload SKCK</label>
+          <input type="file" name="upload_skck" accept="image/*,.pdf" class="w-full text-sm text-slate-200">
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Upload Surat Harta Kekayaan</label>
+          <input type="file" name="upload_harta" accept="image/*,.pdf" class="w-full text-sm text-slate-200">
+        </div>
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Upload KIP / KIS</label>
+          <input type="file" name="upload_kip_kis" accept="image/*,.pdf" class="w-full text-sm text-slate-200">
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-slate-200 text-sm mb-1">Pendapatan per bulan (estimasi)</label>
+        <input type="text" name="pendapatan" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="e.g. 2.500.000">
+      </div>
+
+      <div class="grid grid-cols-2 gap-4">
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Nama orang tua</label>
+          <input type="text" name="nama_orangtua" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="Nama orang tua">
+        </div>
+        <div>
+          <label class="block text-slate-200 text-sm mb-1">Nomor HP orang tua</label>
+          <input type="tel" name="hp_orangtua" class="w-full p-3 rounded-lg bg-white/5 border border-white/10 text-white" placeholder="08xx...">
+        </div>
+      </div>
+
+      <div class="flex gap-3">
+        <button type="submit" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white py-3 rounded-lg font-semibold">Kirim & Tunggu Konfirmasi</button>
+        <a href="index.html" class="flex-1 text-center bg-slate-600 hover:bg-slate-700 text-white py-3 rounded-lg font-semibold">Kembali</a>
+      </div>
+    </form>
+
+    <p class="text-slate-400 text-xs mt-6">Catatan keamanan: Form ini untuk tampilan demo. Jangan masukkan data sensitif seperti PIN/Password/NIK penuh di form ini.</p>
+
+    <!-- Confirmation modal -->
+    <div id="confirmModal" class="fixed inset-0 flex items-center justify-center bg-black/50 hidden">
+      <div class="bg-white/5 backdrop-blur-md rounded-xl p-6 max-w-md w-full border border-white/10">
+        <h3 class="text-white text-2xl font-semibold mb-2">Terima kasih!</h3>
+        <p id="confirmMsg" class="text-slate-200 mb-4">Kami telah menerima pendaftaran Anda. Tunggu konfirmasi admin.</p>
+        <div class="flex justify-end gap-2">
+          <button id="closeModal" class="bg-emerald-500 hover:bg-emerald-600 text-white py-2 px-4 rounded-lg">Tutup</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    $(function(){
+      $('#registerForm').on('submit', function(e){
+        e.preventDefault();
+        // Ambil beberapa field non-sensitif untuk ditampilkan di konfirmasi
+        const name = $(this).find('[name=name]').val() || 'Pengguna';
+        const pendapatan = $(this).find('[name=pendapatan]').val() || '-';
+
+        // Tampilkan pesan konfirmasi cantik (modal)
+        $('#confirmMsg').html(
+          `Terima kasih, <span class="font-semibold">${name}</span>!<br/>Permohonan Anda telah diterima. <br/>Harga: <span class="font-bold">100.000 IDR / bulan</span><br/>Estimasi pendapatan: <span class="font-semibold">${pendapatan}</span><br/><br/>Tunggu konfirmasi admin. Terima kasih.`
+        );
+        $('#confirmModal').removeClass('hidden');
+
+        // Note: jangan kirim / log data sensitif di client-side demo.
+      });
+
+      $('#closeModal').on('click', function(){
+        $('#confirmModal').addClass('hidden');
+      });
+    });
+  </script>
+</body>
+</html>

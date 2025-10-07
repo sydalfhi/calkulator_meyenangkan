@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kalkulator menyenangkan</title>
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- jQuery CDN -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body class="bg-gradient-to-b from-slate-900 via-indigo-900 to-sky-900 min-h-screen flex items-center justify-center p-6">
+  <div class="w-full max-w-sm">
+    <div class="bg-white/5 backdrop-blur-md rounded-2xl shadow-2xl p-6 border border-white/10">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <h1 class="text-white text-2xl font-semibold">Kalkulator</h1>
+          <p class="text-slate-300 text-sm">kalkulator Menyenangkan</p>
+        </div>
+        <div class="text-slate-300 text-sm">v1.0</div>
+      </div>
+
+      <div class="bg-gradient-to-r from-slate-800 to-slate-700 rounded-xl p-4 mb-4">
+        <div id="display" class="text-right text-white text-3xl font-mono min-h-[56px] break-words p-2">0</div>
+      </div>
+
+      <div class="grid grid-cols-4 gap-3">
+        <!-- Row 1 -->
+        <button class="btn function bg-slate-700 text-white py-3 rounded-lg shadow-inner" data-val="C">C</button>
+        <button class="btn function bg-slate-700 text-white py-3 rounded-lg shadow-inner" data-val="%">%</button>
+        <button class="btn function bg-slate-700 text-white py-3 rounded-lg shadow-inner" data-val="(">(</button>
+        <button class="btn op bg-orange-500 text-white py-3 rounded-lg shadow-lg" data-val="/">÷</button>
+
+        <!-- Row 2 -->
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="7">7</button>
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="8">8</button>
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="9">9</button>
+        <button class="btn op bg-orange-500 text-white py-3 rounded-lg shadow-lg" data-val="*">×</button>
+
+        <!-- Row 3 -->
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="4">4</button>
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="5">5</button>
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="6">6</button>
+        <button class="btn op bg-orange-500 text-white py-3 rounded-lg shadow-lg" data-val="-">−</button>
+
+        <!-- Row 4 -->
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="1">1</button>
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="2">2</button>
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="3">3</button>
+        <button class="btn op bg-orange-500 text-white py-3 rounded-lg shadow-lg" data-val="+">+</button>
+
+        <!-- Row 5 -->
+        <button class="btn num col-span-2 bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val="0">0</button>
+        <button class="btn num bg-slate-600 text-white py-3 rounded-lg shadow-inner" data-val=".">.</button>
+        <button id="equals" class="btn equals bg-emerald-500 text-white py-3 rounded-lg shadow-lg" data-val="=">=</button>
+      </div>
+
+      <!-- <p class="text-slate-400 text-xs mt-4">Klik '=' akan memicu alert sesuai permintaan.</p> -->
+    </div>
+
+    <p class="text-slate-200 text-center text-xs mt-6">Made By Syaid Alfarishi</p>
+  </div>
+
+<script>
+  $(function(){
+    let expr = '';
+    const $display = $('#display');
+
+    function refresh(){
+      $display.text(expr === '' ? '0' : expr);
+    }
+
+    // number and dot
+    $('.btn.num').on('click', function(){
+      const v = $(this).data('val');
+      expr += v;
+      refresh();
+    });
+
+    // operators
+    $('.btn.op').on('click', function(){
+      const v = $(this).data('val');
+      // simple guard to avoid starting with operator (except -)
+      if(expr === '' && v !== '-') return;
+      expr += ' ' + v + ' ';
+      refresh();
+    });
+
+    // functions (C, %, ( ) )
+    $('.btn.function').on('click', function(){
+      const v = $(this).data('val');
+      if(v === 'C'){
+        expr = '';
+      } else if(v === '%'){
+        expr += '%';
+      } else {
+        expr += v;
+      }
+      refresh();
+    });
+
+    // equals: redirect to registration page
+    $('#equals').on('click', function(){
+      // redirect to register page where pricing and registration is shown
+      window.location.href = 'register.html';
+    });
+
+    refresh();
+  });
+</script>
+</body>
+</html>
